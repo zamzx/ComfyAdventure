@@ -107,7 +107,7 @@ COMFYUI_HOST = "0.0.0.0:8188"
 
 ### ComfyUI Output Directory
 The app automatically searches for ComfyUI output in these locations:
-- `/home/ut/3Git/ComfyUI/output`
+- `/home/"your PATH goes here"/ComfyUI/output`
 - `./ComfyUI/output`
 - `../ComfyUI/output`
 - `~/ComfyUI/output`

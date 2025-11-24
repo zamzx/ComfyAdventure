@@ -52,6 +52,7 @@ Example :
    https://github.com/edelvarden/comfyui_image_metadata_extension
 
 ### Remote Server Configuration
+# for comfyui make sure to run with --listen to enable API access. 
 The app is configured to use remote servers. If you need to change the server addresses, edit `config.py`:
 ```python
 OLLAMA_HOST = "0.0.0.0:11434"

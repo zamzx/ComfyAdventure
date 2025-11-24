@@ -23,7 +23,7 @@ Example :
 ### 📸 Photo Integration
 - **File Upload**: Upload photos from your device
 - **Webcam Capture**: Take photos directly in the browser
-- **Real-time Preview**: See your photo before generation
+
 
 ### 🎨 AI Image Generation
 - **ComfyUI Integration**: Uses your existing ComfyUI setup

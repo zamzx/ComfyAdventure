@@ -1,0 +1,8 @@
+# python3.10 main.py --lowvram --listen 0.0.0.0 --port 8188
+# comfyui needs to listen for connections for api to function.
+ollama
+Flask==3.0.0
+Werkzeug==3.0.1
+Pillow==10.1.0
+d20==1.1.2
+requests==2.31.0

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Character Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎲 D&D Character Generator 🎲</h1>
+            <p>Create your fantasy character with AI-powered image generation</p>
+        </header>
+
+        <div class="main-content">
+            <div class="generator-section">
+                <div class="mode-selector">
+                    <button id="manual-mode-btn" class="mode-btn active">Manual Entry</button>
+                    <button id="auto-mode-btn" class="mode-btn">Auto Generate</button>
+                </div>
+
+                <form id="character-form" enctype="multipart/form-data">
+                    <!-- Photo Upload Section -->
+                    <div class="photo-section">
+                        <h3>📸 Your Photo</h3>
+                        <div class="photo-upload-area">
+                            <div class="upload-options">
+                                <div class="upload-option">
+                                    <label for="photo-upload" class="upload-btn">
+                                        📁 Upload Photo
+                                    </label>
+                                    <input type="file" id="photo-upload" name="photo" accept="image/*" style="display: none;">
+                                </div>
+                                <div class="upload-option">
+                                    <button type="button" id="webcam-btn" class="upload-btn">
+                                        📷 Use Webcam
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div id="photo-preview" class="photo-preview" style="display: none;">
+                                <img id="preview-img" src="" alt="Preview">
+                                <button type="button" id="remove-photo" class="remove-btn">✖</button>
+                            </div>
+                            
+                            <div id="webcam-container" class="webcam-container" style="display: none;">
+                                <video id="webcam" autoplay playsinline></video>
+                                <div class="webcam-controls">
+                                    <button type="button" id="capture-btn" class="capture-btn">📸 Capture</button>
+                                    <button type="button" id="close-webcam" class="close-btn">✖ Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Character Details Section -->
+                    <div id="manual-section" class="character-section">
+                        <h3>⚔️ Character Details</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Character Name:</label>
+                                <input type="text" id="name" name="name" placeholder="Enter character name">
+                            </div>
+                            <div class="form-group">
+                                <label for="character_class">Class:</label>
+                                <select id="character_class" name="character_class">
+                                    {% for class_name in dnd_classes %}
+                                    <option value="{{ class_name }}">{{ class_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="stats-section">
+                            <h4>📊 Ability Scores</h4>
+                            <div class="stats-grid">
+                                <div class="stat-group">
+                                    <label for="strength">Strength:</label>
+                                    <input type="number" id="strength" name="strength" min="3" max="20" value="10">
+                                    <button type="button" class="roll-btn" data-stat="strength">🎲</button>
+                                </div>
+                                <div class="stat-group">
+                                    <label for="dexterity">Dexterity:</label>
+                                    <input type="number" id="dexterity" name="dexterity" min="3" max="20" value="10">
+                                    <button type="button" class="roll-btn" data-stat="dexterity">🎲</button>
+                                </div>
+                                <div class="stat-group">
+                                    <label for="constitution">Constitution:</label>
+                                    <input type="number" id="constitution" name="constitution" min="3" max="20" value="10">
+                                    <button type="button" class="roll-btn" data-stat="constitution">🎲</button>
+                                </div>
+                                <div class="stat-group">
+                                    <label for="intelligence">Intelligence:</label>
+                                    <input type="number" id="intelligence" name="intelligence" min="3" max="20" value="10">
+                                    <button type="button" class="roll-btn" data-stat="intelligence">🎲</button>
+                                </div>
+                                <div class="stat-group">
+                                    <label for="wisdom">Wisdom:</label>
+                                    <input type="number" id="wisdom" name="wisdom" min="3" max="20" value="10">
+                                    <button type="button" class="roll-btn" data-stat="wisdom">🎲</button>
+                                </div>
+                                <div class="stat-group">
+                                    <label for="charisma">Charisma:</label>
+                                    <input type="number" id="charisma" name="charisma" min="3" max="20" value="10">
+                                    <button type="button" class="roll-btn" data-stat="charisma">🎲</button>
+                                </div>
+                            </div>
+                            <button type="button" id="roll-all-stats" class="roll-all-btn">🎲 Roll All Stats</button>
+                        </div>
+                    </div>
+
+                    <div id="auto-section" class="character-section" style="display: none;">
+                        <h3>🎲 Auto Generate</h3>
+                        <p>Just upload your photo and we'll randomly generate your character stats and details!</p>
+                        <div class="auto-info">
+                            <div class="info-item">
+                                <span class="icon">🎯</span>
+                                <span>Random ability scores (8-18)</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="icon">⚔️</span>
+                                <span>Random D&D class selection</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="icon">🎨</span>
+                                <span>AI-generated character name</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="generation_type" name="generation_type" value="manual">
+                    <input type="hidden" id="webcam_data" name="webcam_data" value="">
+
+                    <div class="generate-section">
+                        <button type="submit" id="generate-btn" class="generate-btn" disabled>
+                            ✨ Generate Character ✨
+                        </button>
+                    </div>
+                </form>
+
+                <div id="loading" class="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Generating your character... This may take a few minutes!</p>
+                </div>
+
+                <div id="result" class="result" style="display: none;">
+                    <h3>🎉 Character Generated!</h3>
+                    <div id="character-info" class="character-info"></div>
+                    <div id="generated-image" class="generated-image"></div>
+                </div>
+            </div>
+
+            <div class="gallery-section">
+                <h3>🖼️ Your Generated Characters</h3>
+                <div id="image-gallery" class="image-gallery">
+                    <p class="no-images">No characters generated yet. Create your first one!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

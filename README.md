@@ -5,7 +5,11 @@ Uses ComfyUI + vision LLM to take a description of an uploaded picture and gener
 Use a better Comfyui workflow for better results - This one uses IPadapters to do the faceswap and dreamshaper was fast enough for my testing purposes, I will be adding Qwen and higher quality image generation models soon. 
 
 I'm uploading this as an example of how to use Comfyui + vision models to build automated prompt workflows. 
-Granite3.2 uses tool calls to retrieve stats from the user input.
+Granite3.2-vision uses tool calls to retrieve stats from the user input.
+
+Check out comfydnd1 working.py for a single file implementation. 
+
+Example : ''' comfydnd1 working.py "description of what you want" /location/to/image'''
 
 ## ✨ Features
 

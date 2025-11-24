@@ -214,8 +214,6 @@ This web interface is built on top of the existing `dndcomfymerge4.py` script, m
 
 This project builds upon existing D&D mechanics and integrates with open-source AI tools. Please ensure you have proper licenses for all ComfyUI models and LoRAs used.
 
----
 
 Enjoy creating your D&D characters! 🧙‍♂️⚔️🐉
-# ComfyAdventure
 # ComfyAdventure

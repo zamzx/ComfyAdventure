@@ -9,7 +9,8 @@ Granite3.2-vision uses tool calls to retrieve stats from the user input.
 
 Check out comfydnd1 working.py for a single file implementation. 
 
-Example : ''' comfydnd1 working.py "description of what you want" /location/to/image'''
+Example : 
+``` comfydnd1 working.py "description of what you want" /location/to/image```
 
 ## ✨ Features
 

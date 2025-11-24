@@ -63,7 +63,7 @@ COMFYUI_HOST = "0.0.0.0:8188"
 
 1. **Clone/Navigate to the project directory**
    ```bash
-   cd adventureBanana
+   cd ComfyAdventure
    ```
 
 2. **Install Python dependencies**

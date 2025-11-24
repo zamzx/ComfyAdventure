@@ -1,5 +1,7 @@
-# python3.10 main.py --lowvram --listen 0.0.0.0 --port 8188
-# comfyui needs to listen for connections for api to function.
+# for comfyui make sure to run with --listen to enable API access. 
+
+# example - python3.10 main.py --lowvram --listen 0.0.0.0 --port 8188
+
 ollama
 Flask==3.0.0
 Werkzeug==3.0.1

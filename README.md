@@ -1,8 +1,11 @@
 # 🎲 D&D Character Generator Web Interface
 
+Uses ComfyUI + vision LLM to take a description of an uploaded picture and generate a Comfyui prompt using the character's stats and class, then describes the image and creates a background story for the character. 
 
+Use a better Comfyui workflow for better results - This one uses IPadapters to do the faceswap and dreamshaper was fast enough for my testing purposes, I will be adding Qwen and higher quality image generation models soon. 
 
-A modern web application that combines D&D character creation with AI-powered image generation. Upload your photo, create a character, and watch as AI generates a fantasy portrait of you as your D&D character!
+I'm uploading this as an example of how to use Comfyui + vision models to build automated prompt workflows. 
+Granite3.2 uses tool calls to retrieve stats from the user input.
 
 ## ✨ Features
 
@@ -32,7 +35,7 @@ A modern web application that combines D&D character creation with AI-powered im
 ## 🛠️ Setup Instructions
 
 ### Prerequisites
-1. **Ollama** running on remote server `100.111.66.29:11434` with models:
+1. **Ollama** or open-ai compatible server running on remote server `0.0.0.0:11434` with models:
    - `llama3.1` (for character descriptions)
    - `granite3.2-vision` (for photo analysis)
 

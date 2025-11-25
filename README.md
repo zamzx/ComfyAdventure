@@ -44,7 +44,7 @@ Example :
    - `llama3.1` (for character descriptions)
    - `granite3.2-vision` (for photo analysis)
 
-2. **ComfyUI** running on remote server `100.111.66.29:8188` with:
+2. **ComfyUI** running on remote server `0.0.0.0:8188` with:
    - Required models: `dreamshaper_8.safetensors`
    - Required LoRA: `pixelart_style_eagle_v6.safetensors`
    - IPAdapter models for face recognition
